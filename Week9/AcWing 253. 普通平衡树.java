@@ -87,14 +87,12 @@ public class Main {
         node.right.color = BLACK;
     }
 
-    // 向红黑树中添加新的元素(key, value)
     static void add(int key){
         root = add(root, key);
         root.color = BLACK; // 最终根节点为黑色节点
         reCal(root);
     }
 
-    // 向以node为根的红黑树中插入元素(key, value)，递归算法
     // 返回插入新节点后红黑树的根
     static Node add(Node node, int key){
 
