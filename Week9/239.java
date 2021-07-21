@@ -17,16 +17,8 @@ public class RBTree{
         }
     }
     private Node root;
-    private int size;
     public RBTree(){
         root = null;
-        size = 0;
-    }
-    public int getSize(){
-        return size;
-    }
-    public boolean isEmpty(){
-        return size == 0;
     }
 
     // 判断节点node的颜色
@@ -93,7 +85,6 @@ public class RBTree{
     private Node add(Node node, int key, int value){
 
         if(node == null){
-            size ++;
             return new Node(key, value); // 默认插入红色节点
         }
 
@@ -133,33 +124,11 @@ public class RBTree{
         if(node.right==null){
             Node rightNode=node.left;
             node.left=null;
-            size--;
             return rightNode;
         }
         node.right=removeMax(node.right);
         return node;
     }
-
-    // 返回以node为根的二分搜索树的最小值所在的节点
-    private Node minimum(Node node){
-        if(node.left == null)
-            return node;
-        return minimum(node.left);
-    }
-
-
-    private Node removeMin(Node node){
-        if(node.left == null){
-            Node rightNode = node.right;
-            node.right = null;
-            size --;
-            return rightNode;
-        }
-        node.left = removeMin(node.left);
-        return node;
-    }
-
-
 }
     public int[] maxSlidingWindow(int[] nums, int k) {
         RBTree tree=new RBTree();
